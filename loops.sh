@@ -67,5 +67,4 @@ do
     INSTALL_PACKAGE $i
     echo -e "${G} \n ${D}"
 done
-echo -e "${G}  \n ${D}"
 STATUS
