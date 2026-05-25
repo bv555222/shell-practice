@@ -1,12 +1,12 @@
 #!/bin/bash
 
 
-R = "\e[31m"
-G = "\e[32m"
-Y = "\e[33m"
-D = "\e[0m"
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+D="\e[0m"
 
-USER = $(id -u)
+USER=$(id -u)
 
 if [ $USER -ne 0 ]
 then 
