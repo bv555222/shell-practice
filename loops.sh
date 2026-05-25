@@ -33,13 +33,13 @@ VALIDATE()
 INSTALL_PACKAGE()
 {
     echo  -e "$G Checking $1 package is already installed or not $D"
-    dnf list installed $1
+    dnf list installed $1 &> /dev/null
     if [ $? -eq 0 ]
     then 
         echo -e "$G $1 is already installed $D"
     else
         echo -e "$Y $1 is not installed... going to install it $D"
-        dnf install $1 -y
+        dnf install $1 -y &> /dev/null
         VALIDATE $? "$1"
     fi
 }
@@ -50,7 +50,7 @@ STATUS()
     echo -e "$G PACKAGE INSTALLATION STATUS $D"
     for i in ${PACKAGES[@]}
     do
-        dnf list installed $i
+        dnf list installed $i &> /dev/null
         if [ $? -eq 0 ]
         then 
             echo -e "$G $i is installed Successfully $D"
