@@ -32,7 +32,7 @@ VALIDATE()
 #check  packages are already installed or not
 INSTALL_PACKAGE()
 {
-    echo  -e "${G} Checking $1 package is already installed or not ${D}"
+    echo  -e "${Y} Checking $1 package is already installed or not ${D}"
     dnf list installed $1 &> /dev/null
     if [ $? -eq 0 ]
     then 
@@ -47,7 +47,7 @@ INSTALL_PACKAGE()
 #check if all the packages istalled or not
 STATUS()
 {
-    echo -e "${G} PACKAGE INSTALLATION STATUS ${D}"
+    echo -e "${Y} PACKAGE INSTALLATION STATUS ${D}"
     for i in ${PACKAGES[@]}
     do
         dnf list installed $i &> /dev/null
@@ -65,7 +65,7 @@ for i in ${PACKAGES[@]}
 do
     echo "Package: $i"
     INSTALL_PACKAGE $i
-    echo -e "${G} ----------------------------- \n ${D}"
+    echo -e "${G} \n ${D}"
 done
-echo -e "${G} ----------------------------------- \n ${D}"
+echo -e "${G}  \n ${D}"
 STATUS
