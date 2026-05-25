@@ -10,10 +10,10 @@ USER=$(id -u)
 
 if [ $USER -ne 0 ]
 then 
-    echo "You do not have root permission..\
-          Please run as root user"
+    echo -e "${R} You do not have root permission..\n
+          Please run as root user ${D}"
 else
-    echo "Running the command as Root user"
+    echo -e "${G} Running the command as Root user ${D}"
 fi
 
 
@@ -23,22 +23,22 @@ VALIDATE()
 {
     if [ $1 -ne 0 ]
     then
-        echo -e "$R Installing $2 is ... FAILURE $D"
+        echo -e "${R} Installing $2 is ... FAILURE ${D}"
     else
-        echo -e "$G Installing $2 is ... SUCCESS $D"
+        echo -e "${G} Installing $2 is ... SUCCESS ${D}"
     fi
 }
 
 #check  packages are already installed or not
 INSTALL_PACKAGE()
 {
-    echo  -e "$G Checking $1 package is already installed or not $D"
+    echo  -e "${G} Checking $1 package is already installed or not ${D}"
     dnf list installed $1 &> /dev/null
     if [ $? -eq 0 ]
     then 
-        echo -e "$G $1 is already installed $D"
+        echo -e "${G} $1 is already installed ${D}"
     else
-        echo -e "$Y $1 is not installed... going to install it $D"
+        echo -e "${Y} $1 is not installed... going to install it ${D}"
         dnf install $1 -y &> /dev/null
         VALIDATE $? "$1"
     fi
@@ -47,15 +47,15 @@ INSTALL_PACKAGE()
 #check if all the packages istalled or not
 STATUS()
 {
-    echo -e "$G PACKAGE INSTALLATION STATUS $D"
+    echo -e "${G} PACKAGE INSTALLATION STATUS ${D}"
     for i in ${PACKAGES[@]}
     do
         dnf list installed $i &> /dev/null
         if [ $? -eq 0 ]
         then 
-            echo -e "$G $i is installed Successfully $D"
+            echo -e "${G} $i is installed Successfully ${D}"
         else
-            echo -e "$R $i installation failed $D"
+            echo -e "${R} $i installation failed ${D}"
         fi
     done
 }
@@ -65,5 +65,7 @@ for i in ${PACKAGES[@]}
 do
     echo "Package: $i"
     INSTALL_PACKAGE $i
+    echo -e "${G} ----------------------------- \n ${D}"
 done
+echo -e "${G} ----------------------------------- \n ${D}"
 STATUS
