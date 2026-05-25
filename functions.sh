@@ -16,7 +16,7 @@ else
     echo "Running the command as Root user"
 fi
 
-#check and install ansible package
+#check ansible successfully installed or not
 VALIDATE()
 {
     if [ $1 -ne 0 ]
