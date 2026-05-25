@@ -44,8 +44,26 @@ INSTALL_PACKAGE()
     fi
 }
 
+#check if all the packages istalled or not
+STATUS()
+{
+    echo -e "$G PACKAGE INSTALLATION STATUS $D"
+    for i in ${PACKAGES[@]}
+    do
+        dnf list installed $i
+        if [ $? -eq 0 ]
+        then 
+            echo -e "$G $i is installed Successfully $D"
+        else
+            echo -e "$R $i installation failed $D"
+        fi
+    done
+}
+
+
 for i in ${PACKAGES[@]}
 do
     echo "Package: $i"
     INSTALL_PACKAGE $i
 done
+STATUS
