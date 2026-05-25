@@ -16,11 +16,7 @@ else
     echo "Running the command as Root user"
 fi
 
-for i in ${PACKAGES[@]}
-do
-    echo "Package: $i"
-    INSTALL_PACKAGE $i
-done
+
 
 #check ansible successfully installed or not
 VALIDATE()
@@ -51,4 +47,8 @@ INSTALL_PACKAGE()
     fi
 }
 
-
+for i in ${PACKAGES[@]}
+do
+    echo "Package: $i"
+    INSTALL_PACKAGE $i
+done
