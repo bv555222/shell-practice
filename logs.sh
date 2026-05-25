@@ -33,7 +33,7 @@ VALIDATE()
 INSTALL_PACKAGE()
 {
     echo  -e "${Y} Checking $1 package is already installed or not ${D}"
-    dnf list installed $1 &>> logfile.txt
+    dnf list installed $1 | tee -a logfile.txt
     if [ $? -eq 0 ]
     then 
         echo -e "${G} $1 is already installed ${D}"
