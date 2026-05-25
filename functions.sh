@@ -1,5 +1,11 @@
 #!/bin/bash
 
+
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+D="\e[0m"
+
 USER=$(id -u)
 
 if [ $USER -ne 0 ]
@@ -15,19 +21,22 @@ VALIDATE()
 {
     if [ $1 -ne 0 ]
     then
-        echo "Installing $2 is ... FAILURE"
+        echo "$R Installing $2 is ... FAILURE $D"
+        exit 1
     else
-        echo "Installing $2 is ... SUCCESS"
+        echo "$G Installing $2 is ... SUCCESS $D"
+        exit 0
     fi
 }
 
+echo  "$G Checking Ansible package is already installed or not $D"
 dnf list installed ansible
 if [ $? -eq 0 ]
 then 
-    echo "Ansible is already installed"
-    exit 1
+    echo "$G Ansible is already installed $D"
+    exit 0
 else
-    echo "Ansible is not installed... going to install it"
+    echo "$Y Ansible is not installed... going to install it $D"
     dnf install ansible -y
     VALIDATE $? "Ansible"
 fi
