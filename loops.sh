@@ -24,10 +24,8 @@ VALIDATE()
     if [ $1 -ne 0 ]
     then
         echo -e "$R Installing $2 is ... FAILURE $D"
-        exit 1
     else
         echo -e "$G Installing $2 is ... SUCCESS $D"
-        exit 0
     fi
 }
 
@@ -39,7 +37,6 @@ INSTALL_PACKAGE()
     if [ $? -eq 0 ]
     then 
         echo -e "$G $1 is already installed $D"
-        exit 0
     else
         echo -e "$Y $1 is not installed... going to install it $D"
         dnf install $1 -y
