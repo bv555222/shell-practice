@@ -11,7 +11,7 @@ do
     --image-id "$AMI_ID" \
     --security-group-ids "$SG_ID" \
     --instance-type t3.micro \
-    --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instances}]" | tee -a logs.txt
+    --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instances}]"
     echo -e "${G} $instances instance is created successfully ${D}"
     echo -e "${G} \n ${D}"
 done
