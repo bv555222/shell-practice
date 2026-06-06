@@ -8,8 +8,8 @@ for instances in "${INSTANCES[@]}";
 do 
     echo "Creating instance: $instances"
     aws ec2 run-instances \ 
-    --image-id $AMI_ID \
-    --security-group-ids $SG_ID \
+    --image-id "$AMI_ID" \
+    --security-group-ids "$SG_ID" \
     --instance-type t3.micro \
     --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instances}]" | tee -a logs.txt
     echo -e "${G} $instances instance is created successfully ${D}"
