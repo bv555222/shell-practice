@@ -7,7 +7,11 @@ INSTANCES=("mysql" "mongodb" "user" "catalogue")
 for instances in ${INSTANCES[@]}
 do
     echo "Creating $instances instance"
-    aws ec2 run-instances --image-id $AMI_ID --instance-type t3.micro --security-group-ids $SG_ID --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instances}]"
+    aws ec2 run-instances \
+    --image-id $AMI_ID \
+    --instance-type t3.micro \
+    --security-group-ids $SG_ID \
+    --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instances}]"
     echo -e "${G} $instances instance is created successfully ${D}"
     echo -e "${G} \n ${D}"
 done

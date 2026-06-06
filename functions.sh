@@ -29,6 +29,7 @@ VALIDATE()
     fi
 }
 
+#check ansible package is already installed or not
 echo  -e "$G Checking Ansible package is already installed or not $D"
 dnf list installed ansible
 if [ $? -eq 0 ]
