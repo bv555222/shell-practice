@@ -7,7 +7,7 @@ INSTANCES=("mysql2" "user2")
 for instances in "${INSTANCES[@]}"; 
 do 
     echo "Creating instance: $instances"
-    aws ec2 run-instances \ 
+    aws ec2 run-instances \
     --image-id "$AMI_ID" \
     --security-group-ids "$SG_ID" \
     --instance-type t3.micro \
